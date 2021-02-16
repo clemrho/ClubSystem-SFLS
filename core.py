@@ -6,7 +6,7 @@ def printMenu():
     print("""
         **********************************************
         **   欢迎来到社团积分管理系统(powered by c10h8)!!  
-        **   版本：v0.1.1（alpha）                        
+        **   版本：v1.1--beta                        
         **   请输入数字选择功能：                                
         **   1.查询                                     
         **   2.更改个人信息（暂不支持）
@@ -18,7 +18,7 @@ def printMenu():
     """)
 
 def inputdata():    
-    with open('datacenter.csv', newline='') as csvfile:
+    with open('datacenter.csv', newline='', encoding="utf-8") as csvfile:
         reader= csv.DictReader(csvfile)
         dataList=[]
         for row in reader:
@@ -28,7 +28,7 @@ def inputdata():
 
 
 def outputdata(data):
-    with open('datacenter.csv', 'w', newline='') as FF:
+    with open('datacenter.csv', 'w', newline='', encoding="utf-8") as FF:
         fieldnames = ['\ufeffid','classNum','name','score','div']
         writer = csv.DictWriter(FF, fieldnames=fieldnames)
         #write changes to the file
@@ -70,14 +70,6 @@ def adminAdd():
         # dataList=inputdata()
         dataList.append(newrow)
         outputdata(dataList)
-
-        # findNameVal=input("请输入姓名： ")
-        # for x in dataList:
-        #     print(x)
-        #     if x['name']==findNameVal:
-        #         print("个人信息:\n姓名："+x['name']+"\n班级："+x['classNum']+"\n部门："+x['div']+"\n当前积分："+str(x['score']))
-        #         #output
-        #         break
 
     else:
         print("login error")
